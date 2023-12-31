@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <div class="container">
+    <div class="left">
+     <input type="text" id="display" disabled>
+  <br>
+  
+    
+    <div class="buttons">
+        <div class="row1" >
+            <button type="button" onclick="clearDisplay()" class= rowel1 >DEL</button>
+            <button type="button" onclick="appendToDisplay('1')"class= rowel1>1</button>
+            <button type="button"onclick="appendToDisplay('2')" class= rowel1>'2</button>
+            <button type="button" onclick="appendToDisplay('3')"class= rowel1>3</button>
+
+        </div>
+        <div class="row1" >
+            <button type="button"onclick="square()" class= rowel1>'x<sup>2</sup></button>
+            <button type="button" onclick="appendToDisplay('4')"class= rowel1>4</button>
+            <button type="button"onclick="appendToDisplay('5')" class= rowel1>5</button>
+            <button type="button" onclick="appendToDisplay('6')"class= rowel1>6</button>
+
+        </div>
+        <div class="row1" >
+            <button type="button"onclick="appendToDisplay('sqrt(')"class= rowel1>√</p>
+            <button type="button" onclick="appendToDisplay('7')" class= rowel1>7</p>
+            <button type="button" onclick="appendToDisplay('8')"class= rowel1>8</p>
+            <button type="button" onclick="appendToDisplay('9')"class= rowel1>9</p>
+    </div>
+    <div class="row1" >
+            <button type="button"onclick="power()" class= rowel1>e<sup>x</sup></button>
+            <button type="button"onclick="modulus()" class= rowel1>mod</button>
+            <button type="button" onclick="reciprocal()"class= rowel1>1/x</button>
+            <button type="button" onclick="appendToDisplay('0')"class= rowel1>0</button>
+            
+</div>
+<div class="operators">
+    <button type="button"onclick="appendToDisplay('+')" class= op>+</button>
+    <button type="button"onclick="appendToDisplay('-')" class= op>-</button>
+    <button type="button"onclick="appendToDisplay('*')" class= op>*</button>
+    <button type="button"onclick="appendToDisplay('/')" class= op>/</button>
+    <button onclick="appendToDisplay('(')" class= op>(</button>
+    <button onclick="appendToDisplay(')')" class= op>)</button>
+</div>
+
+<button onclick="calculateResult()"  class="rowel1">=</button>
+</div>
+
+<div class="footer">
+    <p><h2>>Author: shaunak-majumdar.....</h2> I look forward to suggestions and improvements.Feel free to contact<br>
+    <a href="mailto:nanoheist007@gmail.com" target="blank"><h2>Mail us for suggestions or improvements</h2>
+    </a></p>
+  </footer>
+<!-- <div class="history">
+    <h3> HISTORY</h3>
+</div> -->
+</div>
+<script>
+    function updateDisplay(value) {
+    document.getElementById('display').value = value;
+  }
+
+  // Function to append to the display
+  function appendToDisplay(char) {
+    document.getElementById('display').value += char;
+  }
+
+  // Function to clear the display
+  function clearDisplay() {
+    document.getElementById('display').value = '';
+  }
+
+  // Function to calculate and update the display
+  function calculateResult() {
+    try {
+      const expression = document.getElementById('display').value;
+      let result;
+
+      if (expression.includes('sqrt(')) {
+        const numberToRoot = expression.substring(5, expression.length - 1);
+        result = Math.sqrt(parseFloat(numberToRoot));
+      } else {
+        result = eval(expression);
+      }
+
+      updateDisplay(result);
+    } catch (error) {
+      updateDisplay('Error');
+    }
+  }
+  function power() {
+    let currentValue = parseFloat(document.getElementById('display').value);
+    document.getElementById('display').value = Math.exp(currentValue);
+  }
+
+  function reciprocal() {
+    let currentValue = parseFloat(document.getElementById('display').value);
+    document.getElementById('display').value = 1 / currentValue;
+  }
+  
+  function modulus() {
+    let currentValue = parseFloat(document.getElementById('display').value);
+    document.getElementById('display').value = Math.abs (currentValue);
+  }
+  function root() {
+    let currentValue = parseFloat(document.getElementById('display').value);
+    document.getElementById('display').value = Math.sqrt (currentValue);
+  }
+  function square() {
+    let currentValue = parseFloat(document.getElementById('display').value);
+    document.getElementById('display').value = (currentValue)*(currentValue);
+  }
+  
+  
+  
+
+</script>
+
+</script>
+
+</body>
+</html>
